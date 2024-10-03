@@ -1,6 +1,10 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+package view;
+
+import controller.*;
+
+import java.awt.*; // Importa todos os componentes do módulo AWT.
+import java.awt.event.*; // Importa todos os componentes do módulo AWT.event;
+import javax.swing.*; // Importa todos os componentes do módulo Swing.
 
 public class TelaDeRemoverView extends JFrame {
     public static JLabel lblId;
@@ -30,7 +34,7 @@ public class TelaDeRemoverView extends JFrame {
         lblId = new JLabel("Id:", SwingConstants.RIGHT);
         linha_id.add(lblId);
 
-        NavegadorDeRegistro.popularIds();
+        TelaDeRemoverController.popularIds();
         cbxId = new JComboBox<String>(ids);
         linha_id.add(cbxId);
 
@@ -79,7 +83,7 @@ public class TelaDeRemoverView extends JFrame {
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-                    NavegadorDeRegistro.removerId();
+                    TelaDeRemoverController.removerId();
                 }
             }
         );
@@ -88,7 +92,7 @@ public class TelaDeRemoverView extends JFrame {
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-                    NavegadorDeRegistro.limparCampos();
+                    TelaDeRemoverController.limparCampos();
                 }
             }
         );
@@ -98,7 +102,7 @@ public class TelaDeRemoverView extends JFrame {
             @Override
                 public void itemStateChanged(ItemEvent event) {
                     if (event.getStateChange() == ItemEvent.SELECTED) {
-                        NavegadorDeRegistro.atualizarCampos(false);
+                        TelaDeRemoverController.atualizarCampos(false);
                     }
                 } 
             }
@@ -116,7 +120,7 @@ public class TelaDeRemoverView extends JFrame {
     }
 
     public static void main(String[] args) { // Cria um programa simples que abre uma janela de atualização e configura essa janela para que, ao ser fechada, o programa se encerre.
-        TelaDeRemoverView appTelaDeRemover = new TelaDeRemoverView();
-        appTelaDeRemover.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        TelaDeRemoverView appTelaDeRemoverView = new TelaDeRemoverView();
+        appTelaDeRemoverView.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }

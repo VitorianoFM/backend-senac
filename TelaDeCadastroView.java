@@ -1,11 +1,14 @@
+package view;
+
+import controller.*;
+
 import java.awt.*; // Importa todos os componentes do módulo AWT.
 import java.awt.event.*; // import java.awt.event.*;
 import java.sql.*; // Importa todos os caomponentes do modulos sql para usar o banco de dados do MySQL.
 import javax.swing.*; // Importa todos os componentes do módulo Swing.
 
 // Classe TelaDeLogin que herda de JFrame para criar uma interface gráfica de login.
-public class TelaDeCadastroView extends JFrame 
-{   
+public class TelaDeCadastroView extends JFrame {   
    // Declaração dos componentes da interface gráfica.
    private final JLabel lblNome; // Rótulo para o campo de nome.
    private final JTextField txtNome; // Campo de texto para o nome.
@@ -109,7 +112,7 @@ public class TelaDeCadastroView extends JFrame
    }
    // Método main, ponto de entrada do programa.
    public static void main(String[] args) {
-      TelaDeCadastroView appTelaDeCadastro = new TelaDeCadastroView(); // Cria uma variável da janela de login.
-      appTelaDeCadastro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
+      TelaDeCadastroView appTelaDeCadastroView = new TelaDeCadastroView(); // Cria uma variável da janela de login.
+      appTelaDeCadastroView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
    }
 }

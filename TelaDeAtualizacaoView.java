@@ -1,3 +1,7 @@
+package view;
+
+import controller.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -36,7 +40,7 @@ public class TelaDeAtualizacaoView extends JFrame {
         lblId = new JLabel("Id:", SwingConstants.RIGHT);
         linha_id.add(lblId);
 
-        NavegadorDeRegistro.popularIds();
+        TelaDeAtualizacaoController.popularIds();
         cbxId = new JComboBox<String>(ids);
         linha_id.add(cbxId);
 
@@ -93,7 +97,7 @@ public class TelaDeAtualizacaoView extends JFrame {
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-                    NavegadorDeRegistro.atualizarId();
+                    TelaDeAtualizacaoController.atualizarId();
                 }
             }
         );
@@ -102,7 +106,7 @@ public class TelaDeAtualizacaoView extends JFrame {
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-                    NavegadorDeRegistro.limparCampos();
+                    TelaDeAtualizacaoController.limparCampos();
                 }
             }
         );
@@ -112,7 +116,7 @@ public class TelaDeAtualizacaoView extends JFrame {
             @Override
                 public void itemStateChanged(ItemEvent event) {
                     if (event.getStateChange() == ItemEvent.SELECTED) {
-                        NavegadorDeRegistro.atualizarCampos(cbxId.getSelectedItem().toString());
+                        TelaDeAtualizacaoController.atualizarCampos(cbxId.getSelectedItem().toString());
                     }
                 } 
             }
@@ -130,7 +134,7 @@ public class TelaDeAtualizacaoView extends JFrame {
     }
 
     public static void main(String[] args) { // Cria um programa simples que abre uma janela de atualização e configura essa janela para que, ao ser fechada, o programa se encerre.
-        TelaDeAtualizacaoView appTelaDeAtualizacao = new TelaDeAtualizacaoView();
-        appTelaDeAtualizacao.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        TelaDeAtualizacaoView appTelaDeAtualizacaoView = new TelaDeAtualizacaoView();
+        appTelaDeAtualizacaoView.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }

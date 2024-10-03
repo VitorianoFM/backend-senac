@@ -1,11 +1,13 @@
+package view;
+
+import controller.*;
+
 import java.awt.*; // Importa todos os componentes do módulo AWT.
-import java.awt.event.*; // import java.awt.event.*;
-// import java.sql.*; // Importa todos os caomponentes do modulos sql para usar o banco de dados do MySQL.
+import java.awt.event.*; // Importa todos os componentes do módulo AWT.event;
 import javax.swing.*; // Importa todos os componentes do módulo Swing.
 
 // Classe TelaDeLogin que herda de JFrame para criar uma interface gráfica de login.
-public class TelaDePesquisaView extends JFrame 
-{   
+public class TelaDePesquisaView extends JFrame {   
    // Declaração dos componentes da interface gráfica.
    public static JLabel lblId; // Rótulo para o campo de nome.
    public static JTextField txtId; // Campo de texto para o nome.
@@ -125,7 +127,7 @@ public class TelaDePesquisaView extends JFrame
                      txtPesquisa.requestFocus();
                      return;
                  } else {
-                 NavegadorDeRegistro.pesquisar();
+                 TelaDePesquisaController.pesquisar();
                }
             }
         }
@@ -136,7 +138,7 @@ public class TelaDePesquisaView extends JFrame
             @Override
             public void actionPerformed(ActionEvent event) {
                 if (ntfCampoVazio() == false) {
-                    NavegadorDeRegistro.primeiroRegistro();
+                    TelaDePesquisaController.primeiroRegistro();
                 }
             }
         }
@@ -147,7 +149,7 @@ public class TelaDePesquisaView extends JFrame
             @Override
             public void actionPerformed(ActionEvent event) {
                 if (ntfCampoVazio() == false) {
-                    NavegadorDeRegistro.registroAnterior();
+                    TelaDePesquisaController.registroAnterior();
                 }
             }
         }
@@ -158,7 +160,7 @@ public class TelaDePesquisaView extends JFrame
             @Override
             public void actionPerformed(ActionEvent event) {
                 if (ntfCampoVazio() == false) {
-                    NavegadorDeRegistro.proximoRegistro();
+                    TelaDePesquisaController.proximoRegistro();
                 }
             }
         }
@@ -169,7 +171,7 @@ public class TelaDePesquisaView extends JFrame
             @Override
             public void actionPerformed(ActionEvent event) {
                 if (ntfCampoVazio() == false) {
-                    NavegadorDeRegistro.ultimoRegistro();
+                    TelaDePesquisaController.ultimoRegistro();
                 }
              }
          }
@@ -181,7 +183,7 @@ public class TelaDePesquisaView extends JFrame
          public void keyReleased(KeyEvent e) {
             if (txtPesquisa.getText().trim().equals(txtUsuario) == false && txtPesquisa.getText().trim().length() > 0) {
                 if (e.getKeyCode() == 10) {
-                    NavegadorDeRegistro.pesquisar();
+                    TelaDePesquisaController.pesquisar();
                 }
             } else {
                 limparCampos("Digite algo para continuar.");
@@ -226,7 +228,7 @@ public class TelaDePesquisaView extends JFrame
    }
    // Método main, ponto de entrada do programa.
    public static void main(String[] args) {
-    TelaDePesquisaView appTelaDePesquisa = new TelaDePesquisaView(); // Cria uma variável da janela de login.
-      appTelaDePesquisa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
+    TelaDePesquisaView appTelaDePesquisaView = new TelaDePesquisaView(); // Cria uma variável da janela de login.
+      appTelaDePesquisaView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
    }
 }
