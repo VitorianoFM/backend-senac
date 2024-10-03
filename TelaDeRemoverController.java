@@ -1,12 +1,13 @@
 package controller;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+import model.*;
+import view.*;
 
-import javax.swing.DefaultComboBoxModel;
+import java.sql.*;
+import java.util.*;
+import javax.swing.*;
 
-public class TelaDeRemoverController {
+public class TelaDeRemoverController extends TelaDeRemoverView {
         public static void popularIds() {
         try {
             ArrayList<String> idsTemp = new ArrayList<>();

@@ -1,5 +1,8 @@
 package controller;
 
-public class TelaDeCadastroController {
+import model.*;
+import view.*;
+
+public class TelaDeCadastroController extends TelaDeCadastroView {
     
 }

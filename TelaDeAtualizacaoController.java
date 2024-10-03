@@ -1,11 +1,13 @@
 package controller;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
+import model.*;
+import view.*;
+
+import java.sql.*;
 import java.util.ArrayList;
 
-public class TelaDeAtualizacaoController {
-        public static void popularIds() {
+public class TelaDeAtualizacaoController extends TelaDeAtualizacaoView {
+    public static void popularIds() {
         try {
             ArrayList<String> idsTemp = new ArrayList<>();
             idsTemp.add("Selecione aqui o ID");

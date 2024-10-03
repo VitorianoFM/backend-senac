@@ -1,9 +1,11 @@
 package controller;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
+import model.*;
+import view.*;
 
-public class TelaDePesquisaController {
+import java.sql.*;
+
+public class TelaDePesquisaController extends TelaDePesquisaView {
     public static void pesquisar() { // Define um método público e estático chamado pesquisar que não retorna nenhum valor. Esse método pode ser chamado de qualquer lugar do seu código e provavelmente realiza alguma operação de pesquisa, mas o comportamento específico do método dependerá da implementação dentro das suas chaves {}.
         try {
             if (txtPesquisa.getText().trim().equals(txtUsuario) == false) {
