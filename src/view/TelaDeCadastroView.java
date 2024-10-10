@@ -4,7 +4,7 @@ import controller.*;
 
 import java.awt.*; // Importa todos os componentes do módulo AWT.
 import java.awt.event.*; // import java.awt.event.*;
-import java.sql.*; // Importa todos os caomponentes do modulos sql para usar o banco de dados do MySQL.
+// import java.sql.*; // Importa todos os caomponentes do modulos sql para usar o banco de dados do MySQL.
 import javax.swing.*; // Importa todos os componentes do módulo Swing.
 
 // Classe TelaDeLogin que herda de JFrame para criar uma interface gráfica de login.
