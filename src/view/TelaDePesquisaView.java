@@ -195,6 +195,8 @@ public class TelaDePesquisaView extends JFrame {
      );
 
       setSize(270, 300); // Define o tamanho da janela para 270 pixels de largura e 220 pixels de altura.
+      ImageIcon img = new ImageIcon("./senac-logo.png");
+      setIconImage(img.getImage());
       setVisible(true); // Torna a janela visível.
       txtPesquisa.requestFocus();  
    }
@@ -229,6 +231,6 @@ public class TelaDePesquisaView extends JFrame {
    // Método main, ponto de entrada do programa.
    public static void main(String[] args) {
     TelaDePesquisaView appTelaDePesquisaView = new TelaDePesquisaView(); // Cria uma variável da janela de login.
-      appTelaDePesquisaView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
+      appTelaDePesquisaView.setDefaultCloseOperation(EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
    }
 }
