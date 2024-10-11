@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class TelaDeAtualizacaoController extends TelaDeAtualizacaoView {
     public static void popularIds() {
-
+        TelaDeAtualizacaoModel.popularIdsModel();
     }
 
     public static void enviarIdsParaView(String[] idsView) {
@@ -67,36 +67,13 @@ public class TelaDeAtualizacaoController extends TelaDeAtualizacaoView {
         cbxId.setSelectedIndex(0);
     }
 
-    public static void atualizarCampos(String id) {
-        try {
-            if (cbxId.getSelectedIndex() > 0) {
-                Connection conexao = MySQLConnector.conectar();
-                String strSqlAtualizarCampos = "select * from `db_senac`.`tbl_senac` where `id` = " + id + ";";
-                Statement stmSqlAtualizarCampos = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-                ResultSet rstSqlAtualizarCampos = stmSqlAtualizarCampos.executeQuery(strSqlAtualizarCampos);
-                if (rstSqlAtualizarCampos.next()) {
-                    txtNome.setText(rstSqlAtualizarCampos.getString("nome"));
-                    nomeAtual = txtNome.getText();
-                    txtEmail.setText(rstSqlAtualizarCampos.getString("email"));
-                    emailAtual = txtEmail.getText();
-                    txtSenha.setText(rstSqlAtualizarCampos.getString("senha"));
-                    senhaAtual = String.valueOf(txtSenha.getPassword());
-                    lblNotificacoes.setText("Campos atualizados com sucesso!");
-                } else {
-                    lblNotificacoes.setText("Ops! Não foi encontrado o id selecionado. Por favor, verifique e tente novamente.");
-                }
-                stmSqlAtualizarCampos.close();
-            } else {
-                lblNotificacoes.setText("Selecione um id para continuar.");
-                limparCampos();
-            }
-        } catch (Exception e) {
-            lblNotificacoes.setText(setHtmlFormat("Não foi possível encontrar os ids! Por favor, verifique e tente novamente."));
-            System.err.println("Erro: " + e);
-        }
-    }
-
     public static void notificarUsuario(String txt) {
         lblNotificacoes.setText(setHtmlFormat(txt));
+    }
+
+    public static void registrarAtualizacao() {
+        nomeAtual = txtNome.getText();
+        emailAtual = txtEmail.getText();
+        senhaAtual = String.valueOf(txtSenha.getPassword());
     }
 }
