@@ -229,8 +229,9 @@ public class TelaDePesquisaView extends JFrame {
       return "<html><body>" + strTexto + "</body></html>";
    }
    // Método main, ponto de entrada do programa.
+   public static TelaDePesquisaView appTelaDePesquisaView;
    public static void main(String[] args) {
-    TelaDePesquisaView appTelaDePesquisaView = new TelaDePesquisaView(); // Cria uma variável da janela de login.
-      appTelaDePesquisaView.setDefaultCloseOperation(EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
+    appTelaDePesquisaView = new TelaDePesquisaView(); // Cria uma variável da janela de login.
+    appTelaDePesquisaView.setDefaultCloseOperation(EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
    }
 }

@@ -133,8 +133,9 @@ public class TelaDeAtualizacaoView extends JFrame {
         return "<html><body>" + strTexto + "</body></html>";
     }
 
+    public static TelaDeAtualizacaoView appTelaDeAtualizacaoView;
     public static void main(String[] args) { // Cria um programa simples que abre uma janela de atualização e configura essa janela para que, ao ser fechada, o programa se encerre.
-        TelaDeAtualizacaoView appTelaDeAtualizacaoView = new TelaDeAtualizacaoView();
+        appTelaDeAtualizacaoView = new TelaDeAtualizacaoView();
         appTelaDeAtualizacaoView.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }

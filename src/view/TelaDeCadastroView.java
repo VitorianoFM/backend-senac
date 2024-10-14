@@ -81,6 +81,8 @@ public class TelaDeCadastroView extends JFrame {
      );
    
       setSize(270, 220); // Define o tamanho da janela para 270 pixels de largura e 220 pixels de altura.
+      ImageIcon img = new ImageIcon("./senac-logo.png");
+      setIconImage(img.getImage());
       setVisible(true); // Torna a janela visível.
 
       
@@ -90,8 +92,9 @@ public class TelaDeCadastroView extends JFrame {
       return "<html><body>" + strTexto + "</body></html>";
    }
    // Método main, ponto de entrada do programa.
+   public static TelaDeCadastroView appTelaDeCadastroView;
    public static void main(String[] args) {
-      TelaDeCadastroView appTelaDeCadastroView = new TelaDeCadastroView(); // Cria uma variável da janela de login.
+      appTelaDeCadastroView = new TelaDeCadastroView(); // Cria uma variável da janela de login.
       appTelaDeCadastroView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
    }
 }

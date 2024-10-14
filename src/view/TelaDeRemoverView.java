@@ -119,8 +119,9 @@ public class TelaDeRemoverView extends JFrame {
         return "<html><body>" + strTexto + "</body></html>";
     }
 
+    public static TelaDeRemoverView appTelaDeRemoverView;
     public static void main(String[] args) { // Cria um programa simples que abre uma janela de atualização e configura essa janela para que, ao ser fechada, o programa se encerre.
-        TelaDeRemoverView appTelaDeRemoverView = new TelaDeRemoverView();
+        appTelaDeRemoverView = new TelaDeRemoverView();
         appTelaDeRemoverView.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }
