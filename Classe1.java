@@ -7,7 +7,7 @@ public class Classe1 {
         float fltInputUsuario1 = scnInputUsuario.nextFloat(); // captura o que o usuario registrar no terminal
         System.out.println("Agora digite o segundo número a ser somado e tecle: \"Enter\"");
         float fltInputUsuario2 = scnInputUsuario.nextFloat(); // captura o que o usuario registrar no terminal
-        System.out.println("O resultado da soma é: " + (fltInputUsuario1 + fltInputUsuario2));
+        System.out.println("O resultado da soma é: " + Classe2.calcularSoma(fltInputUsuario1, fltInputUsuario2));
         scnInputUsuario.close();
     }
 }
