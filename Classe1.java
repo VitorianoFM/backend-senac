@@ -9,7 +9,15 @@ public class Classe1 {
         float fltInputUsuario2 = scnInputUsuario.nextFloat(); // captura o que o usuario registrar no terminal
         System.out.println("Digite o número da opção desejada e tecle: \"Enter\".");
         String[] opcoes = Classe2.mostrarOpcoes();
-        System.out.println("O resultado da soma é: " + Classe2.calcularSoma(fltInputUsuario1, fltInputUsuario2));
+
+        for (int count = 0; count < opcoes.length; count++){
+            System.out.println(count + " - " + opcoes[count]);
+        }
+
+        int opcaoEscolhida = scnInputUsuario.nextInt();
+
+
+        System.out.println("O resultado da " + opcoes[opcaoEscolhida] + " é: " + Classe2.resuldado(fltInputUsuario1, fltInputUsuario2, opcaoEscolhida));
         scnInputUsuario.close();
     }
 }
