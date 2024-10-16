@@ -1,6 +1,10 @@
 public class Classe3 {
 
-    String[] operadoresMatematicos = {"Soma", "Subtração", "Multiplicação", "Divisão"};
+    private static final String[] operadoresMatematicos = {"Soma", "Subtração", "Multiplicação", "Divisão"};
+
+    public static String[] pegarOpcoes() {
+        return operadoresMatematicos;
+    }
 
     public static float somar(float numero1, float numero2) {
         return numero1 + numero2;
