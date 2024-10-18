@@ -4,18 +4,19 @@ import controller.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class TelaDeLoginView extends JFrame {
 
 private final JLabel lblLogin; // Rótulo para o campo de login.
-private final JTextField txtLogin; // Campo de texto para o login.
+public final JTextField txtLogin; // Campo de texto para o login.
 
 private final JLabel lblSenha; // Rótulo para o campo de senha.
-private final JPasswordField txtSenha; // Campo de texto para a senha, que oculta os caracteres digitados.
+public final JPasswordField txtSenha; // Campo de texto para a senha, que oculta os caracteres digitados.
 
 private final JButton btnEntrar; // Botão para submeter o login e a senha.
 
-private final JLabel lblNotificacoes; // Rótulo para exibir notificações ou mensagens ao usuário.
+public static JLabel lblNotificacoes; // Cria um rótulo centralizado para notificações. // Rótulo para exibir notificações ou mensagens ao usuário.
 
 // Construtor da classe TelaDeLogin, onde os componentes são configurados e adicionados à janela.
 public TelaDeLoginView() 
@@ -44,8 +45,9 @@ public TelaDeLoginView()
 
     btnEntrar.addActionListener(
         new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent event) {
-                TelaDeLoginController.logarController();
+                TelaDeLoginController.logarController(txtLogin.getText(), String.valueOf(txtSenha.getPassword()));
             }
         }
     );
