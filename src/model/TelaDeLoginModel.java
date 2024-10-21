@@ -4,8 +4,6 @@ import controller.*;
 
 import java.sql.*;
 
-import controller.TelaDeLoginController;
-
 public class TelaDeLoginModel {
     public static void logarModel(String login, String senha) {
         try {
