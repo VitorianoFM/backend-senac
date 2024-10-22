@@ -26,7 +26,7 @@ public class TelaDeRemoverView extends JFrame {
 
     public TelaDeRemoverView()
     {
-        super("Tela de Atualização");
+        super("Tela de Remover");
         setLayout(new GridLayout(5,1,5,5));
 
         JPanel linha_id = new JPanel(new GridLayout(1, 2));

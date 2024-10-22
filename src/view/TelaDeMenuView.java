@@ -56,7 +56,7 @@ public class TelaDeMenuView extends JFrame {
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-                    JOptionPane.showMessageDialog(null, "Você clicou no item: " + event.getActionCommand());
+                    TelaDeMenuController.abrirTelaDeCadastroView();
                 }
             }
         );
@@ -65,7 +65,7 @@ public class TelaDeMenuView extends JFrame {
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-                    JOptionPane.showMessageDialog(null, "Você clicou no item: " + event.getActionCommand());
+                    TelaDeMenuController.abrirTelaDePesquisaView();
                 }
             }
         );
@@ -74,7 +74,7 @@ public class TelaDeMenuView extends JFrame {
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-                    JOptionPane.showMessageDialog(null, "Você clicou no item: " + event.getActionCommand());
+                    TelaDeMenuController.abrirTelaDeAtualizarView();
                 }
             }
         );
@@ -83,13 +83,12 @@ public class TelaDeMenuView extends JFrame {
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-                    JOptionPane.showMessageDialog(null, "Você clicou no item: " + event.getActionCommand());
+                    TelaDeMenuController.abrirTelaDeRemoverView();
                 }
             }
         );
 
         setSize(270, 300); // Define o tamanho da janela.
-        setDefaultCloseOperation(EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
         setVisible(true); // Torna a janela visível.
         ImageIcon img = new ImageIcon("./senac-logo.png");
         setIconImage(img.getImage());
@@ -103,6 +102,7 @@ public class TelaDeMenuView extends JFrame {
     public static TelaDeMenuView appTelaDeMenuView;
     public static void main(String[] args) {
         appTelaDeMenuView = new TelaDeMenuView(); // Cria uma variável da janela de menu.
+        appTelaDeMenuView.setDefaultCloseOperation(EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
     }
 
 }
