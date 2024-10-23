@@ -13,6 +13,7 @@ public class TelaDeLoginModel {
             ResultSet rstSqlLogin = stmSqlLogin.executeQuery(strSqlLogin);
             if (rstSqlLogin.next()) { // Verifica a existência de um usuário com determinado e-mail em um banco de dados.
                 TelaDeLoginController.notificarUsuario("Conectado com sucesso!!!");
+                TelaDeLoginController.abrirTelaDeMenu();
             } else { // Verifica se o login é válido. Caso não seja, ele permite que o usuário realize um cadastro. Os dados do cadastro são inseridos em um banco de dados e uma mensagem de confirmação é exibida para o usuário.
                 TelaDeLoginController.notificarUsuario("Login e/ou senha não encontrado! Por favor, verifique e tente novamente.");
             }
