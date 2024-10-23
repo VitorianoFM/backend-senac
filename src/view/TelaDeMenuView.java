@@ -10,10 +10,15 @@ public class TelaDeMenuView extends JFrame {
 
     public JMenu cadastroMenu;
 
+    // criar o menu arquivo
+    
     public JMenuItem novoItem;
     public JMenuItem pesquisarItem;
     public JMenuItem atualizarItem;
     public JMenuItem removerItem;
+
+    // criar os itens: "Sobre" (abrir tela JOptionPane.showMessageDialog)
+    // e "Sair" (System.exit(0));
 
     public JMenuBar barraDeMenu;
 
@@ -39,6 +44,45 @@ public class TelaDeMenuView extends JFrame {
         removerItem = new JMenuItem("Remover");
         removerItem.setMnemonic('R');
 
+        JMenu fileMenu = new JMenu("Arquivo"); // criar menu de arquivo
+        fileMenu.setMnemonic('Q'); // definir mnemônico para F
+
+        JMenuItem aboutItem = new JMenuItem("Sobre...");
+        aboutItem.setMnemonic('S'); // definir mnemônico para A
+        fileMenu.add(aboutItem); // adicionar item sobre ao menu de arquivo
+        aboutItem.addActionListener(
+           new ActionListener() // classe interna anônima
+           {  
+              // exibir caixa de diálogo de mensagem quando o usuário selecionar Sobre...
+              @Override
+              public void actionPerformed(ActionEvent event)
+              {
+                 JOptionPane.showMessageDialog(TelaDeMenuView.this,
+                    "Este é um exemplo\nde uso de menus.",
+                    "Sobre", JOptionPane.PLAIN_MESSAGE);
+              } 
+           } 
+        ); 
+          
+        JMenuItem exitItem = new JMenuItem("Sair"); // criar item de saída
+        exitItem.setMnemonic('I'); // definir mnemônico para x
+        fileMenu.add(exitItem); // adicionar item de saída ao menu de arquivo
+        exitItem.addActionListener(
+           new ActionListener() // classe interna anônima
+           {  
+              // encerrar o aplicativo quando o usuário clicar em exitItem
+              @Override
+              public void actionPerformed(ActionEvent event)
+              {
+                 System.exit(0); // sair do aplicativo
+              } 
+           }
+        ); 
+  
+        JMenuBar bar = new JMenuBar(); // criar barra de menu
+        setJMenuBar(bar); // adicionar barra de menu ao aplicativo
+        bar.add(fileMenu); // adicionar menu de arquivo à barra de menu
+            
         lblTelaDeMenu = new JLabel("Tela de Menu", SwingConstants.CENTER);
 
         cadastroMenu.add(novoItem);
@@ -47,6 +91,11 @@ public class TelaDeMenuView extends JFrame {
         cadastroMenu.add(removerItem);
 
         barraDeMenu.add(cadastroMenu);
+
+        fileMenu.add(aboutItem);
+        fileMenu.add(exitItem);
+
+        barraDeMenu.add(fileMenu);
 
         setJMenuBar(barraDeMenu);
 
