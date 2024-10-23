@@ -15,6 +15,7 @@ public class TelaDeLoginController extends TelaDeLoginView {
     public static void abrirTelaDeMenu() {
         TelaDeMenuView.appTelaDeMenuView = new TelaDeMenuView();
         TelaDeMenuView.appTelaDeMenuView.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        InterfaceView.definirIcone(TelaDeMenuView.appTelaDeMenuView);
 
         appTelaDeLoginView.dispose();
     }

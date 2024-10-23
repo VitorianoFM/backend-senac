@@ -123,8 +123,6 @@ public class TelaDeAtualizacaoView extends JFrame {
         );
 
         setSize(285, 300); // Define o tamanho da janela para 285 pixels de largura e 300 pixels de altura.
-        ImageIcon img = new ImageIcon("./senac-logo.png"); // Cria um novo objeto ImageIcon chamado "img" e carrega a imagem "senac-logo.png" localizada no mesmo diretório que o código.
-        setIconImage(img.getImage()); // Define a imagem carregada no objeto "img" como o ícone da janela.
         setVisible(true); // Torna a janela visível na tela.
         cbxId.requestFocus(); // Dá foco ao componente chamado "cbxId", geralmente um JComboBox (caixa de combinação), fazendo com que ele seja selecionado e pronto para receber entrada do usuário.
     }
@@ -137,5 +135,6 @@ public class TelaDeAtualizacaoView extends JFrame {
     public static void main(String[] args) { // Cria um programa simples que abre uma janela de atualização e configura essa janela para que, ao ser fechada, o programa se encerre.
         appTelaDeAtualizacaoView = new TelaDeAtualizacaoView();
         appTelaDeAtualizacaoView.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        InterfaceView.definirIcone(appTelaDeAtualizacaoView);
     }
 }

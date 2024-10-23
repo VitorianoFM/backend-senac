@@ -87,8 +87,6 @@ public class TelaDeLoginView extends JFrame {
 
         setSize(165, 250); // Define o tamanho da janela.
         setVisible(true); // Torna a janela visível.
-        ImageIcon img = new ImageIcon("./senac-logo.png");
-        setIconImage(img.getImage());
         
     }
 
@@ -114,6 +112,7 @@ public class TelaDeLoginView extends JFrame {
     public static void main(String[] args) {
         appTelaDeLoginView = new TelaDeLoginView(); // Cria uma variável da janela de login.
         appTelaDeLoginView.setDefaultCloseOperation(EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
+        InterfaceView.definirIcone(appTelaDeLoginView);
     }
 
 }  

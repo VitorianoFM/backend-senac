@@ -233,5 +233,6 @@ public class TelaDePesquisaView extends JFrame {
    public static void main(String[] args) {
     appTelaDePesquisaView = new TelaDePesquisaView(); // Cria uma variável da janela de login.
     appTelaDePesquisaView.setDefaultCloseOperation(EXIT_ON_CLOSE); // Define que ao fechar a janela, o programa será encerrado.
+    InterfaceView.definirIcone(appTelaDePesquisaView);
    }
 }

@@ -123,5 +123,6 @@ public class TelaDeRemoverView extends JFrame {
     public static void main(String[] args) { // Cria um programa simples que abre uma janela de atualização e configura essa janela para que, ao ser fechada, o programa se encerre.
         appTelaDeRemoverView = new TelaDeRemoverView();
         appTelaDeRemoverView.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        InterfaceView.definirIcone(appTelaDeRemoverView);
     }
 }
