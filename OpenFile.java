@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
+import java.io.*; // Este pacote contém classes essenciais para realizar operações de entrada e saída (I/O) em Java, como leitura e escrita de dados em arquivos, manipulação de streams, e muito mais.
 
 public class OpenFile {
     public static void abrirArquivo() {
