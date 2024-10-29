@@ -3,9 +3,9 @@ package controller;
 import model.*;
 import view.*;
 
-import java.sql.*;
+import java.sql.*; // Importa todos os caomponentes do modulos sql para usar o banco de dados do MySQL.
 import java.util.*;
-import javax.swing.*;
+import javax.swing.*; // Importa todos os componentes do módulo Swing.
 
 public class TelaDeRemoverController extends TelaDeRemoverView {
         public static void popularIds() {

@@ -3,7 +3,7 @@ package controller;
 import model.*;
 import view.*;
 
-import java.sql.*;
+import java.sql.*; // Importa todos os caomponentes do modulos sql para usar o banco de dados do MySQL.
 import java.util.*;
 
 public class TelaDeAtualizacaoController extends TelaDeAtualizacaoView {

@@ -2,9 +2,9 @@ package view;
 
 import controller.*;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.*; // Importa todos os componentes do módulo AWT.
+import java.awt.event.*; // import java.awt.event.*;
+import javax.swing.*; // Importa todos os componentes do módulo Swing.
 
 public class TelaDeAtualizacaoView extends JFrame {
     public static JLabel lblId;

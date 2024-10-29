@@ -2,7 +2,7 @@ package model;
 
 // import controller.*;
 
-import java.sql.*;
+import java.sql.*; // Importa todos os caomponentes do modulos sql para usar o banco de dados do MySQL.
 
 public class TelaDeCadastroModel {
     public static int cadastrarModel(String nome, String email, String senha) {

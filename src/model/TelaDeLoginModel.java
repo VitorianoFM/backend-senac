@@ -2,7 +2,7 @@ package model;
 
 import controller.*;
 
-import java.sql.*;
+import java.sql.*; // Importa todos os caomponentes do modulos sql para usar o banco de dados do MySQL.
 
 public class TelaDeLoginModel {
     public static void logarModel(String login, String senha) {
