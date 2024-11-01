@@ -1,10 +1,11 @@
 package controller;
 
 import model.*;
-
 import view.*;
+
 import java.io.*;
 import java.util.*;
+import javax.swing.*; // Importa todos os componentes do módulo Swing.
 
 public class InterfaceController extends InterfaceView {
     public static final String localViewImgFolder = System.getProperty("user.dir") 
@@ -14,6 +15,14 @@ public class InterfaceController extends InterfaceView {
         + "view"
         + "\\"
         + "img";
+
+    public static final String localViewFolder = System.getProperty("user.dir")
+        + "\\" 
+        + "src"
+        + "\\" 
+        + "view";
+
+    public static final Icon imgPadrao = new ImageIcon(InterfaceView.class.getResource("imagem-padrao.jpg"));
 
     public static void verificarApagarImagensInuteis() {
         final File folder = new File(localViewImgFolder);

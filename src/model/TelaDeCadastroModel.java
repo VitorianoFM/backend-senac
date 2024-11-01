@@ -1,6 +1,6 @@
 package model;
 
-// import controller.*;
+import controller.*;
 
 import java.sql.*; // Importa todos os caomponentes do modulos sql para usar o banco de dados do MySQL.
 

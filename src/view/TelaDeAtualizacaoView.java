@@ -11,6 +11,10 @@ public class TelaDeAtualizacaoView extends JFrame {
     public static JComboBox<String> cbxId;
     public static String[] ids;
 
+    public static JLabel lblImagem;
+    public static JButton btnCarregarImagem;
+    public static JButton btnRemoverImagem;
+
     public static JLabel lblNome;
     public static JTextField txtNome;
     public static String nomeAtual;
@@ -33,7 +37,7 @@ public class TelaDeAtualizacaoView extends JFrame {
     public TelaDeAtualizacaoView()
     {
         super("Tela de Atualização");
-        setLayout(new GridLayout(6,1,5,5));
+        setLayout(new GridLayout(7,1,5,5));
 
         JPanel linha_id = new JPanel(new GridLayout(1, 2));
 
@@ -45,6 +49,19 @@ public class TelaDeAtualizacaoView extends JFrame {
         linha_id.add(cbxId);
 
         add(linha_id);
+
+        JPanel linha_imagem = new JPanel(new GridLayout(1, 3));
+
+        lblImagem = new JLabel(InterfaceController.imgPadrao);
+        linha_imagem.add(lblImagem);
+
+        btnCarregarImagem = new JButton("Carregar Imagem");
+        linha_imagem.add(btnCarregarImagem);
+
+        btnRemoverImagem = new JButton("Remover Imagem");
+        linha_imagem.add(btnRemoverImagem);
+
+        add(linha_imagem);
 
         JPanel linha_nome = new JPanel(new GridLayout(1, 2));
 
