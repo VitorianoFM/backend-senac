@@ -3,27 +3,19 @@ package controller;
 import model.*;
 import view.*;
 
-import java.sql.*; // Importa todos os caomponentes do modulos sql para usar o banco de dados do MySQL.
-import java.util.*;
+import javax.swing.*;
+import static java.nio.file.StandardCopyOption.*;
+import java.nio.file.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
 
 public class TelaDeAtualizacaoController extends TelaDeAtualizacaoView {
     public static void popularIds() {
-        try {
-            ArrayList<String> idsTemp = new ArrayList<>();
-            idsTemp.add("Selecione aqui o id");
-            Connection conexao = MySQLConnector.conectar();
-            String strSqlPopularIds = "select * from `db_senac`.`tbl_senac` order by `id` asc;";
-            Statement stmSqlPopularIds = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ResultSet rstSqlPopularIds = stmSqlPopularIds.executeQuery(strSqlPopularIds);
-            while (rstSqlPopularIds.next()) {
-                idsTemp.add(rstSqlPopularIds.getString("id"));
-            }
-            ids = idsTemp.toArray(new String[0]);
-            stmSqlPopularIds.close();
-        } catch (Exception e) {
-            lblNotificacoes.setText(setHtmlFormat("Não foi possível encontrar os ids! Por favor, verifique e tente novamente."));
-            System.err.println("Erro: " + e);
-        }
+        TelaDeAtualizacaoModel.popularIdsModel();
+    }
+
+    public static void enviarIds(String[] idsView) {
+        ids = idsView;
     }
 
     public static void atualizarId() {
@@ -31,6 +23,7 @@ public class TelaDeAtualizacaoController extends TelaDeAtualizacaoView {
             String atualizarNome = "";
             String atualizarEmail = "";
             String atualizarSenha = "";
+            String atualizarImagem = "";
 
             if (txtNome.getText().trim().equals(nomeAtual) == false) {
                 atualizarNome = "`nome` = '" + txtNome.getText() + "'";
@@ -50,20 +43,18 @@ public class TelaDeAtualizacaoController extends TelaDeAtualizacaoView {
                 atualizarSenha += "`senha` = '" + String.valueOf(txtSenha.getPassword()) + "'";
             }
 
-            if (atualizarNome.length() > 0 || atualizarEmail.length() > 0 || atualizarSenha.length() > 0) {
-                Connection conexao = MySQLConnector.conectar();
-                String strSqlAtualizarId = "update `db_senac`.`tbl_senac` set " + atualizarNome + atualizarEmail + atualizarSenha + " where `id` = " + cbxId.getSelectedItem().toString() + ";";
-                // System.out.println(strSqlAtualizarId);
-                Statement stmSqlAtualizarId = conexao.createStatement();
-                stmSqlAtualizarId.addBatch(strSqlAtualizarId);
-                stmSqlAtualizarId.executeBatch();
-                nomeAtual = txtNome.getText();
-                emailAtual = txtEmail.getText();
-                senhaAtual = String.valueOf(txtSenha.getPassword());
-                stmSqlAtualizarId.close();
-                lblNotificacoes.setText("O id " + cbxId.getSelectedItem().toString() + " foi atualizado com sucesso!");
+            if (txtImagem.getText().trim().equals("") == false) {
+                if (atualizarNome.length() > 0 || atualizarEmail.length() > 0 || atualizarSenha.length() > 0) {
+                    atualizarImagem = " , ";
+                }
+                atualizarImagem += "`img` = '" + txtImagem.getText() + "'";
+            }
+
+            String idAtual = cbxId.getSelectedItem().toString();
+            if (atualizarNome.length() > 0 || atualizarEmail.length() > 0 || atualizarSenha.length() > 0 || atualizarImagem.length() > 0) {
+                TelaDeAtualizacaoModel.atualizarCadastroModel(idAtual, atualizarNome, atualizarEmail, atualizarSenha, atualizarImagem);
             } else {
-                lblNotificacoes.setText("Não foram encontradas alterações para atualizar o id " + cbxId.getSelectedItem().toString());
+                lblNotificacoes.setText("Não foram encontradas alterações para atualizar o id " + idAtual);
             }
         } catch (Exception e) {
             lblNotificacoes.setText(setHtmlFormat("Não foi possível atualizar o id! Por favor, verifique e tente novamente."));
@@ -79,31 +70,75 @@ public class TelaDeAtualizacaoController extends TelaDeAtualizacaoView {
     }
 
     public static void atualizarCampos(String id) {
-        try {
-            if (cbxId.getSelectedIndex() > 0) {
-                Connection conexao = MySQLConnector.conectar();
-                String strSqlAtualizarCampos = "select * from `db_senac`.`tbl_senac` where `id` = " + id + ";";
-                Statement stmSqlAtualizarCampos = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-                ResultSet rstSqlAtualizarCampos = stmSqlAtualizarCampos.executeQuery(strSqlAtualizarCampos);
-                if (rstSqlAtualizarCampos.next()) {
-                    txtNome.setText(rstSqlAtualizarCampos.getString("nome"));
-                    nomeAtual = txtNome.getText();
-                    txtEmail.setText(rstSqlAtualizarCampos.getString("email"));
-                    emailAtual = txtEmail.getText();
-                    txtSenha.setText(rstSqlAtualizarCampos.getString("senha"));
-                    senhaAtual = String.valueOf(txtSenha.getPassword());
-                    lblNotificacoes.setText("Campos atualizados com sucesso!");
-                } else {
-                    lblNotificacoes.setText("Ops! Não foi encontrado o id selecionado. Por favor, verifique e tente novamente.");
-                }
-                stmSqlAtualizarCampos.close();
-            } else {
-                lblNotificacoes.setText("Selecione um id para continuar.");
-                limparCampos();
-            }
-        } catch (Exception e) {
-            lblNotificacoes.setText(setHtmlFormat("Não foi possível encontrar os ids! Por favor, verifique e tente novamente."));
-            System.err.println("Erro: " + e);
+        if (cbxId.getSelectedIndex() > 0) {
+            String idAtual = String.valueOf(cbxId.getSelectedItem());
+            TelaDeAtualizacaoModel.atualizarCamposModel(idAtual);
+        } else {
+            lblNotificacoes.setText("Selecione um id para continuar.");
+            limparCampos();
         }
     }
-}
+
+    public static void enviarCampos(String nome, String email, String senha) {
+        txtNome.setText(nome);
+        nomeAtual = txtNome.getText();
+        txtEmail.setText(email);
+        emailAtual = txtEmail.getText();
+        txtSenha.setText(senha);
+        senhaAtual = String.valueOf(txtSenha.getPassword());
+    }
+
+    public static void notificarUsuario(String txt) {
+        lblNotificacoes.setText(setHtmlFormat(txt));
+    }
+
+    public static void registrarAtualizacao() {
+        nomeAtual = txtNome.getText();
+        emailAtual = txtEmail.getText();
+        senhaAtual = String.valueOf(txtSenha.getPassword());
+    }
+
+    public static void carregarImagem() {
+        // aqui vai carregar a imagem para a tela de atualização
+        String fileName = "";
+        try {
+            JFileChooser chooser = new JFileChooser();
+
+            chooser.setDialogTitle("Selecione o arquivo que deseja carregar");
+            chooser.setApproveButtonText("Carregar arquivo");
+            int returnVal1 = chooser.showOpenDialog(null);
+            String fileFullPath = "";
+            if (returnVal1 == JFileChooser.APPROVE_OPTION) {
+                fileFullPath = chooser.getSelectedFile().getAbsolutePath();
+                fileName = chooser.getSelectedFile().getName();
+            } else {
+                System.out.println("Que pena!");
+                return;
+            }
+
+            String folderFullPath = InterfaceController.localViewImgFolder;
+
+            String newFileName = InterfaceController.gerarNomeAleatorio() + "-" + fileName;
+
+            Path pathOrigin = Paths.get(fileFullPath);
+            Path pathDestination = Paths.get(folderFullPath + "\\" + newFileName);
+            if (fileFullPath.length() > 0 && folderFullPath.length() > 0) {
+                Files.copy(pathOrigin, pathDestination, REPLACE_EXISTING);
+                System.out.println("Arquivo " + fileName + " copiado/colado com sucesso!");
+            } else {
+                System.out.println("Ops! Não foi possível copiar o arquivo. Por favor, verifique e tente novamente.");
+            }
+        } catch (Exception e) {
+            System.err.println("Não foi possível copiar o arquivo! Tente novamente mais tarde.");
+        }
+
+        Icon imgCarregada = new ImageIcon(InterfaceController.localViewImgFolder + "\\" + fileName);
+
+        lblImagem.setIcon(imgCarregada);
+        txtImagem.setText(fileName);
+    }
+
+    public static void removerImagem() {
+        // aqui vai remover a imagem da tela de atualização
+    }
+}            

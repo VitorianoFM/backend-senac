@@ -12,6 +12,7 @@ public class TelaDeCadastroModel {
             Statement stmSqlEmail = conexao.createStatement();
             ResultSet rstSqlEmail = stmSqlEmail.executeQuery(strSqlEmail);
             if (rstSqlEmail.next()) { // Verifica a existência de um usuário com determinado e-mail em um banco de dados.
+                stmSqlEmail.close();
                 return 0;
                 // lblNotificacoes.setText(setHtmlFormat("Ops! Já existe um usuário utilizando este email. Por favor, digite outro email e tente novamente."));
             } else { // Verifica se o login é válido. Caso não seja, ele permite que o usuário realize um cadastro. Os dados do cadastro são inseridos em um banco de dados e uma mensagem de confirmação é exibida para o usuário.

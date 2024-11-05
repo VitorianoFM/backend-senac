@@ -69,5 +69,4 @@ public class TelaDeMenuController extends TelaDeMenuView {
             }
         );
     }
-
 }

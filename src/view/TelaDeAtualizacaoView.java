@@ -14,6 +14,7 @@ public class TelaDeAtualizacaoView extends JFrame {
     public static JLabel lblImagem;
     public static JButton btnCarregarImagem;
     public static JButton btnRemoverImagem;
+    public static final JTextField txtImagem = new JTextField();
 
     public static JLabel lblNome;
     public static JTextField txtNome;

@@ -6,6 +6,7 @@ import view.*;
 import java.io.*;
 import java.util.*;
 import javax.swing.*; // Importa todos os componentes do módulo Swing.
+import java.awt.*;
 
 public class InterfaceController extends InterfaceView {
     public static final String localViewImgFolder = System.getProperty("user.dir") 
@@ -22,7 +23,7 @@ public class InterfaceController extends InterfaceView {
         + "\\" 
         + "view";
 
-    public static final Icon imgPadrao = new ImageIcon(InterfaceView.class.getResource("imagem-padrao.jpg"));
+    public static final Icon imgPadrao = new ImageIcon(new ImageIcon(localViewFolder + "\\imagem-padrao.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
 
     public static void verificarApagarImagensInuteis() {
         final File folder = new File(localViewImgFolder);
@@ -37,9 +38,13 @@ public class InterfaceController extends InterfaceView {
                 listFilesForFolder(fileEntry);
             } else {
                 strFiles.add(fileEntry.getName());
-                System.out.println(fileEntry.getName());
+                // System.out.println(fileEntry.getName());
             }
         }
         return strFiles;
+    }
+    
+    public static String gerarNomeAleatorio() {
+        return String.format("file-%s", Math.random());
     }
 }
